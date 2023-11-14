@@ -18,13 +18,13 @@ const processFile = async (basePath, subPath, file) => {
   console.log(`Full path: ${fullPath}`);
   console.log(`Sub path : ${subPath}`);
   console.log(`File     : ${file}`);
-  await promisifiedExec(`onedrive-uploader upload "${fullPath}" "${subPath.length ? subPath : "/"}"`);
+  await promisifiedExec(`onedrive-uploader -q upload "${fullPath}" "${subPath.length ? subPath : "/"}"`);
 }
 
 const walk = async (baseDir, subPath) => {
   if (subPath.length > 0) {
     const newFolder = subPath.substring(1);
-    await promisifiedExec(`onedrive-uploader mkdir "${newFolder}"`);
+    await promisifiedExec(`onedrive-uploader -q mkdir "${newFolder}"`);
   }
 
   try {
